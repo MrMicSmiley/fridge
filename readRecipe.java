@@ -17,6 +17,7 @@ public class readRecipe {
                 while((read = sc.nextLine()) != "***"){
                     recipe.add_tag(read);
                 }
+                allRecipes.add(recipe);
                 sc.nextLine();
             }
         }
