@@ -35,7 +35,7 @@ public class Controller {
        			String ingredient;
        			System.out.println("Enter the name of the ingredient to be added:");
        			ingredient = stringInput.nextLine();
-            ingredients.add(ingredent);
+                ingredients.add(ingredent);
        			//add ingredient to interior controller arraylist;
        		}
        		else if(intInput == 3){
@@ -50,11 +50,11 @@ public class Controller {
        			link = stringInput.nextLine();
        			Recipe newRecipe = new Recipe(name,link);
             
-            String[] elements = ingredients.split(",");
-            for(int i = 0; i < elements.length; i++){
-              newRecipe.addIngredient(elements[i]);
-            }
-            allRecipes.add(newRecipe);
+                String[] elements = ingredients.split(",");
+                for(int i = 0; i < elements.length; i++){
+                  newRecipe.addIngredient(elements[i]);
+                }
+                allRecipes.add(newRecipe);
             
        		}
         //quit
