@@ -2,8 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-
-
+    ArrayList<String> ingredients = new ArrayList();
+    ArrayList<Recipe> allRecipes = new ArrayList();
+    ArrayList<Recipe> shownRecipe = new ArrayList();
 
 
 
@@ -34,6 +35,7 @@ public class Controller {
        			String ingredient;
        			System.out.println("Enter the name of the ingredient to be added:");
        			ingredient = stringInput.nextLine();
+            ingredients.add(ingredent);
        			//add ingredient to interior controller arraylist;
        		}
        		else if(intInput == 3){
@@ -47,8 +49,13 @@ public class Controller {
        			System.out.println("Enter the link/instructions for the recipe:");
        			link = stringInput.nextLine();
        			Recipe newRecipe = new Recipe(name,link);
-       			//add ingredients to recipe
-       			//add recipe to overall recipes
+            
+            String[] elements = ingredients.split(",");
+            for(int i = 0; i < elements.length; i++){
+              newRecipe.addIngredient(elements[i]);
+            }
+            allRecipes.add(newRecipe);
+            
        		}
         //quit
         	else if(intInput == 4){
