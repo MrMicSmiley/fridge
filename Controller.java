@@ -22,10 +22,10 @@ public class Controller{
     public void addToFridge(String ingredient){
         fridge.add(ingredient);
     }
-    public void addToRecipes(Recipe recipe){
+    public void addToAllRecipes(Recipe recipe){
         allRecipes.add(recipe);
     }
-    public void addToShown(Recipe recipe){
+    public void addToShownRecipes(Recipe recipe){
         shownRecipes.add(recipe);
     }
 
@@ -61,19 +61,46 @@ public class Controller{
     }
     public String shownRecipesToString(){
         String result = "";
+        Recipe temp;
         for(int i = 0; i < shownRecipes.size(); i++){
-            result += shownRecipes.get(i);
+            temp = shownRecipes.get(i);
+            result += temp.get_name() + temp.get_link();
             result += "\n";
+            result += temp.print_ingredients();
         }
         return result;
     }
     public String allRecipesToString(){
         String result = "";
+        Recipe temp;
         for(int i = 0; i < allRecipes.size(); i++){
-            result += allRecipes.get(i);
+            temp = allRecipes.get(i);
+            result += temp.get_name() + temp.get_link();
             result += "\n";
+            result += temp.print_ingredients();
         }
         return result;
+    }
+
+    /**
+    TO-DO: ADD MORE TEST CASES, IMPLEMENT BROWSE FUNCTION  MAKE SURE TO GET NEW RECIPE
+    */
+
+    public void test1(){
+        //Tests adding recipes and ingredients
+
+        //Test ingredient adding
+        this.addToFridge("apple")
+        System.out.println(this.fridgeToString());
+
+        //Test recipe adding
+        Recipe r1 = new Recipe("apple pie");
+        Recipe r2 = new Recipe("peanut butter and jelly");
+        this.addToAllRecipes(r1);
+        this.addToAllRecipes(r2);
+        this.addToShownRecipes(r1);
+        System.out.println("Shown Recipes: "+shownRecipes.toString());
+        System.out.println("All Recipes: "+allRecipes.toString());
     }
     public static void main(String[] args){
         //initialize the user input variables
@@ -127,14 +154,11 @@ public class Controller{
                 System.out.println("Enter the link/instructions for the recipe:");
                 link = stringInput.nextLine();
                 Recipe newRecipe = new Recipe(name,link);
-
                 String[] elements = ingredients.split(",");
                 for(int i = 0; i < elements.length; i++){
                     newRecipe.add_ingredient(elements[i]);
                 }
-
                 controller.allRecipes.add(newRecipe);
-
             }
             //quit
             else if(intInput == 4){
