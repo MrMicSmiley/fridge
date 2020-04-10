@@ -1,77 +1,87 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Controller {
+public class Controller{
     private ArrayList<String> fridge;
     private ArrayList<Recipe> allRecipes;
     private ArrayList<Recipe> shownRecipes;
 
     public Controller(){
-      fridge = new ArrayList<String>();
-      allRecipes = new ArrayList<Recipe>();
-      shownRecipes = new ArrayList<Recipe>();
+        fridge = new ArrayList<String>();
+        allRecipes = new ArrayList<Recipe>();
+        shownRecipes = new ArrayList<Recipe>();
     }
 
     //public ArrayList<Recipe> filterRecipes(multiple tags ){
-        //sort with these tags, update shownRecipe
+    //sort with these tags, update shownRecipe
     //}
     //public ArrayList<Recipe> browseRecipe(){
-      
+
     //}
-    
+
     public void addToFridge(String ingredient){
-      fridge.add(ingredient);
+        fridge.add(ingredient);
     }
     public void addToRecipes(Recipe recipe){
-      allRecipes.add(recipe);
+        allRecipes.add(recipe);
     }
     public void addToShown(Recipe recipe){
-      shownRecipes.add(recipe);
+        shownRecipes.add(recipe);
     }
 
     public String getIngredient(String ingredient){
-      int index = fridge.indexOf(ingredient);
-      return fridge.get(index);
+        int index = fridge.indexOf(ingredient);
+        return fridge.get(index);
     }
-    public String getRecipe(boolean isAllRecipes, Recipe recipe){
-      int index;
-      //depending on isAllRecipes value can either grab recipe from allRecipes or shownRecipes
-      if(!isAllRecipes){
+    public Recipe getShownRecipe(Recipe recipe){
+        int index;
+        index = shownRecipes.indexOf(recipe);
+        return shownRecipes.get(index);
+    }
+    public Recipe getAllRecipe(Recipe recipe){
+        int index;
         index = allRecipes.indexOf(recipe);
         return allRecipes.get(index);
-      }
-      index = allRecipes.indexOf(recipe);
-      return allRecipes.get(index);
     }
 
     public void removeFromFridge(String ingredient){
-      fridge.remove(ingredient);
+        fridge.remove(ingredient);
     }
     public void removeFromShown(Recipe recipe){
-      shownRecipe.remove(recipe);
+        shownRecipes.remove(recipe);
     }
 
     public String fridgeToString(){
-      String result = "";
-      for(int i = 0; i < fridge.size(); i++){
-        result += fridge.get(i);
-        result += "\n";
-      }
-      return result;
+        String result = "";
+        for(int i = 0; i < fridge.size(); i++){
+            result += fridge.get(i);
+            result += "\n";
+        }
+        return result;
     }
     public String shownRecipesToString(){
-      String result = "";
-      for(int i = 0; i < shownRecipe.size(); i++){
-        result += shownRecipe.get(i);
-        result += "\n";
-      }
-      return result;
+        String result = "";
+        for(int i = 0; i < shownRecipes.size(); i++){
+            result += shownRecipes.get(i);
+            result += "\n";
+        }
+        return result;
+    }
+    public String allRecipesToString(){
+        String result = "";
+        for(int i = 0; i < allRecipes.size(); i++){
+            result += allRecipes.get(i);
+            result += "\n";
+        }
+        return result;
     }
     public static void main(String[] args){
         //initialize the user input variables
 
+        Controller controller = new Controller();
 
-        String input = '';
+
+        String input = "";
         Scanner stringInput = new Scanner(System.in);
         int intInput = 0;
 
@@ -90,11 +100,11 @@ public class Controller {
             //browse
             //SORT HERE
             if(intInput == 1){
-                filterRecipes(tags);
-                for(int i = 0; i < shownRecipe.size(); i++){
-                    shownRecipe.get(i).toString();
-                    System.out.println("");
-                }
+                //filterRecipes(tags);
+//                for(int i = 0; i < shownRecipes.size(); i++){
+//                    shownRecipes.get(i).toString();
+//                    System.out.println("");
+//                }
 
                 //maybe ask to select what recipe you want to select
             }
@@ -103,7 +113,7 @@ public class Controller {
                 String ingredient;
                 System.out.println("Enter the name of the ingredient to be added:");
                 ingredient = stringInput.nextLine();
-                fridge.add(ingredient);
+                controller.fridge.add(ingredient);
                 //add ingredient to interior controller arraylist;
             }
             else if(intInput == 3){
@@ -123,7 +133,7 @@ public class Controller {
                     newRecipe.add_ingredient(elements[i]);
                 }
 
-                allRecipes.add(newRecipe);
+                controller.allRecipes.add(newRecipe);
 
             }
             //quit
@@ -138,4 +148,3 @@ public class Controller {
 
 
 }
-
