@@ -1,6 +1,19 @@
 import java.util.ArrayList;;
 
 public class Recipe extends tagManagement {
+	public static void main(String[] args) {
+		Recipe chalupa = new Recipe("chalupaz", "https://en.wikipedia.org/wiki/Chalupa");
+		chalupa.add_ingredient("Taco");
+		chalupa.add_ingredient("Lettuce");
+		chalupa.add_ingredient("Tomato");
+		chalupa.add_ingredient(" ");
+		chalupa.get_name();
+		chalupa.getLink();
+		chalupa.print_ingredients();
+		chalupa.rem_ingredient("Taco");
+		chalupa.print_ingredients();
+
+	}
 
 	private String rec_name;
 	private ArrayList<String> ingredients;
@@ -48,11 +61,25 @@ public class Recipe extends tagManagement {
 		return true;
 	}
 
-	public void getLink() {
+	private void getLink() {
 		System.out.println("Please follow link to view the recipe.");
 		System.out.printf("%s", this.link);
 	}
-
+	
+	public void get_ingredients()	{
+		
+		int counter = 1;
+		String sb = new String();
+		String ing = new String();
+		sb = "";
+		
+		for (String string : ingredients) {
+			ing = "(" + counter + ")" + " " + string + "\n";
+			sb = sb + ing;
+			counter++;
+		}
+	}
+	
 	public void print_ingredients() {
 		if (ingredients == null) {
 			System.out.println("Nothing to see hear");
@@ -61,13 +88,13 @@ public class Recipe extends tagManagement {
 		int counter = 1;
 		System.out.println("Here is the list of all the ingredients in this recipe.\n");
 		for (String string : ingredients) {
-
+			
 			System.out.printf("(%d) %s ", counter, string);
 			counter++;
 		}
 	}
 
-	public boolean rem_ingredient(String ingredient) {
+	private boolean rem_ingredient(String ingredient) {
 		if (ingredient.equals("") || ingredient.equals(" ")) {
 			System.out.println("Enter a valid ingredient to remove from the recipe.");
 			return false;
