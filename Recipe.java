@@ -1,19 +1,6 @@
 import java.util.ArrayList;;
 
 public class Recipe extends tagManagement {
-	public static void main(String[] args) {
-		Recipe chalupa = new Recipe("chalupaz", "https://en.wikipedia.org/wiki/Chalupa");
-		chalupa.add_ingredient("Taco");
-		chalupa.add_ingredient("Lettuce");
-		chalupa.add_ingredient("Tomato");
-		chalupa.add_ingredient(" ");
-		chalupa.get_name();
-		chalupa.getLink();
-		chalupa.print_ingredients();
-		chalupa.rem_ingredient("Taco");
-		chalupa.print_ingredients();
-
-	}
 
 	private String rec_name;
 	private ArrayList<String> ingredients;
@@ -45,7 +32,7 @@ public class Recipe extends tagManagement {
 		this.link = link;
 	}
 
-	private boolean add_ingredient(String ingredient) {
+	public boolean add_ingredient(String ingredient) {
 		if (ingredient.equals("") || ingredient.equals(" ")) {
 			System.out.println("That was not a valid ingredient to add.");
 			return false;
@@ -61,12 +48,12 @@ public class Recipe extends tagManagement {
 		return true;
 	}
 
-	private void getLink() {
+	public void getLink() {
 		System.out.println("Please follow link to view the recipe.");
 		System.out.printf("%s", this.link);
 	}
 
-	private void print_ingredients() {
+	public void print_ingredients() {
 		if (ingredients == null) {
 			System.out.println("Nothing to see hear");
 			return;
@@ -80,7 +67,7 @@ public class Recipe extends tagManagement {
 		}
 	}
 
-	private boolean rem_ingredient(String ingredient) {
+	public boolean rem_ingredient(String ingredient) {
 		if (ingredient.equals("") || ingredient.equals(" ")) {
 			System.out.println("Enter a valid ingredient to remove from the recipe.");
 			return false;
