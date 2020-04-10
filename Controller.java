@@ -15,7 +15,6 @@ public class Controller {
 
 
         //browse recipes
-        //add to fridge
         //add ingreddient
 
             //if user selected 3 and entered their option
@@ -28,10 +27,15 @@ public class Controller {
         String recipeName = "apple pie";
         String recipeIngreds = "butter, flour, sugar, apple";
         ArrayList<String> listIngredsforRecipe = new ArrayList();
+        String[] elements = recipeIngreds.split(",");
+        for(int i = 0; i < elements.length; i++){
+            listIngredsforRecipe.add(elements[i]);
+        }
         Recipe temp = new Recipe("recipeName");
         for(int i = 0; i < listIngredsforRecipe.size(); i++){
             temp.addIngredient(listIngredsforRecipe.get(i));
         }
+        //perhaps have to do test cases for null and stuff
         allRecipes.add(temp);
 
 
