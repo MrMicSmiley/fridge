@@ -73,7 +73,7 @@ public class Controller {
         Controller controller = new Controller();
 
 
-        String input = '';
+        String input = "";
         Scanner stringInput = new Scanner(System.in);
         int intInput = 0;
 
