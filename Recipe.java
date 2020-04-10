@@ -6,15 +6,16 @@ public class Recipe {
 
 	public Recipe(String rec_name) {
 		this.rec_name = rec_name;
+		this.ingredients = new ArrayList<String>();
 	}
 
 	boolean add_ingredient(String ingredient) {
 		if (ingredient.equals("") || ingredient.equals(" ")) {
 			return false;
-			}
+		}
 		for (String each : ingredients) {
 			if (each.equals(ingredient)) {
-				System.out.println("This ingredient is already part of the recipe.");	
+				System.out.println("This ingredient is already part of the recipe.");
 				return false;
 			}
 		}
@@ -22,11 +23,16 @@ public class Recipe {
 		System.out.println("%s was added to the recipe.");
 		return true;
 	}
-		
-	
+
 	boolean rem_ingredient(String ingredient) {
+		if (ingredient.equals("") || ingredient.equals(" ")) {
+			return false;
+			for (String each : ingredients) {
+				if (each.equals(ingredient)) {
+					ingre
+					return true;
+				}
+			}	
 		return false;
 		}
 	}
-
-
