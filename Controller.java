@@ -2,16 +2,73 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller {
-    ArrayList<String> ingredients = new ArrayList();
-    ArrayList<Recipe> allRecipes = new ArrayList();
-    ArrayList<Recipe> shownRecipe = new ArrayList();
+    private ArrayList<String> fridge;
+    private ArrayList<Recipe> allRecipes;
+    private ArrayList<Recipe> shownRecipes;
 
+    public Controller(){
+      fridge = new ArrayList<String>();
+      allRecipes = new ArrayList<Recipe>();
+      shownRecipes = new ArrayList<Recipe>();
+    }
 
+    public ArrayList<Recipe> filterRecipe(){
+      
+    }
+    
+    public void addToFridge(String ingredient){
+      fridge.add(ingredient);
+    }
+    public void addToRecipes(Recipe recipe){
+      allRecipes.add(recipe);
+    }
+    public void addToShown(Recipe recipe){
+      shownRecipes.add(recipe);
+    }
 
+    public String getIngredient(String ingredient){
+      int index = fridge.indexOf(ingredient);
+      return fridge.get(index);
+    }
+    public String getRecipe(boolean isAllRecipes, Recipe recipe){
+      int index;
+      //depending on isAllRecipes value can either grab recipe from allRecipes or shownRecipes
+      if(!isAllRecipes){
+        index = allRecipes.indexOf(recipe);
+        return allRecipes.get(index);
+      }
+      index = allRecipes.indexOf(recipe);
+      return allRecipes.get(index);
+    }
+
+    public void removeFromFridge(String ingredient){
+      fridge.remove(ingredient);
+    }
+    public void removeFromShown(Recipe recipe){
+      shownRecipe.remove(recipe);
+    }
+
+    public String fridgeToString(){
+      String result = "";
+      for(int i = 0; i < fridge.size(); i++){
+        result += fridge.get(i);
+        result += "\n";
+      }
+      return result;
+    }
+    public String shownRecipesToString(){
+      String result = "";
+      for(int i = 0; i < shownRecipe.size(); i++){
+        result += shownRecipe.get(i);
+        result += "\n";
+      }
+      return result;
+    }
     public static void main(String[] args){
     	//initialize the user input variables
 
         String input = '';
+        int intInput = 0;
         Scanner stringInput = new Scanner(System.in);
 
         //menu loop
