@@ -1,4 +1,4 @@
-import java.util.ArrayList;;
+import java.util.ArrayList;
 
 public class Recipe extends tagManagement {
 
@@ -8,7 +8,7 @@ public class Recipe extends tagManagement {
 
 	public Recipe() {
 		this.rec_name = null;
-		this.ingredients = null;
+		this.ingredients = new ArrayList<String>();//was null
 		this.link = null;
 	}
 
@@ -37,10 +37,12 @@ public class Recipe extends tagManagement {
 			System.out.println("That was not a valid ingredient to add.");
 			return false;
 		}
-		for (String each : ingredients) {
-			if (each.equals(ingredient)) {
-				System.out.println("This ingredient is already part of the recipe.\n");
-				return false;
+		if(!ingredients.isEmpty()){
+			for (String each : ingredients) {
+				if (each.equals(ingredient)) {
+					System.out.println("This ingredient is already part of the recipe.\n");
+					return false;
+				}
 			}
 		}
 		ingredients.add(ingredient);
@@ -55,7 +57,7 @@ public class Recipe extends tagManagement {
 
 	public void print_ingredients() {
 		if (ingredients == null) {
-			System.out.println("Nothing to see hear");
+			System.out.println("Nothing to see here");
 			return;
 		}
 		int counter = 1;
