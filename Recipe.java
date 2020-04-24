@@ -13,19 +13,24 @@ public class Recipe extends tagManagement {
 	}
 
 	public String get_name() {
-		System.out.printf("%s \n", rec_name);
+		//System.out.printf("%s \n", rec_name);
 		return rec_name;
 	}
 
 	public String get_link() {
-		System.out.printf("%s \n", link);
+		//System.out.printf("%s \n", link);
 		return link;
 	}
 
 	public int num_ingred() {
 		return ingredients.size();
 	}
-
+	public boolean containsIngredient(String ingredient){
+		if(ingredients.contains(ingredient)){
+			return true;
+		}
+		return false;
+	}
 	public Recipe(String rec_name, String link) {
 		this.rec_name = rec_name;
 		this.ingredients = new ArrayList<String>();
@@ -50,12 +55,12 @@ public class Recipe extends tagManagement {
 		return true;
 	}
 
-	public void getLink() {
+	/*public void getLink() {
 		System.out.println("Please follow link to view the recipe.");
 		System.out.printf("%s", this.link);
-	}
+	}*/
 
-	public void get_ingredients()	{
+	public String get_ingredients()	{
 		
 		int counter = 1;
 		String sb = new String();
@@ -67,6 +72,7 @@ public class Recipe extends tagManagement {
 			sb = sb + ing;
 			counter++;
 		}
+		return sb;
 	}
 
 	public void print_ingredients() {

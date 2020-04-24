@@ -12,13 +12,6 @@ public class Controller{
         shownRecipes = new ArrayList<Recipe>();
     }
 
-    //public ArrayList<Recipe> filterRecipes(multiple tags ){
-    //sort with these tags, update shownRecipe
-    //}
-    //public ArrayList<Recipe> browseRecipe(){
-
-    //}
-
     public void addToFridge(String ingredient){
         fridge.add(ingredient);
     }
@@ -41,15 +34,13 @@ public class Controller{
 
     public void removeFromFridge(String ingredient){
         fridge.remove(ingredient);
-        //should add functionality to remove recipes that contained removed ingredient from shown
-        //to implement this, write a contains function in recipe
-        /*Recipe temp;
+        Recipe temp;
         for (int i = 0; i < shownRecipes.size(); i++){
             temp = shownRecipes.get(i);
-            if(temp.ingredients.contains(ingredient)){
+            if(temp.containsIngredient(ingredient)){
                 this.removeFromShown(temp);
             }
-        }*/
+        }
     }
     public void removeFromShown(Recipe recipe){
         shownRecipes.remove(recipe);
@@ -63,7 +54,6 @@ public class Controller{
         }
         return result;
     }
-    //For the following two methods: temp.print_ingredients is a print statement, does not return ingredients to string.
     public String shownRecipesToString(){
         String result = "";
         Recipe temp;
@@ -71,7 +61,7 @@ public class Controller{
             temp = shownRecipes.get(i);
             result += temp.get_name() +" "+ temp.get_link();
             result += "\n";
-            //result += temp.print_ingredients();
+            result += temp.get_ingredients();
         }
         return result;
     }
@@ -82,7 +72,7 @@ public class Controller{
             temp = allRecipes.get(i);
             result += temp.get_name() +" "+ temp.get_link();
             result += "\n";
-            //result += temp.print_ingredients();
+            result += temp.get_ingredients();
         }
         return result;
     }
@@ -94,12 +84,6 @@ public class Controller{
         System.out.println(this.fridgeToString());
 
         //Test recipe adding
-        /*NOTES:
-          Recipe constructor errors with string, probably is changed in newer version, but note just in case
-          When adding an ingredient to a recipe, null pointer exception is given because nothing was actually initialized in the constructor
-          There is a void constructor that sucks - should have only the link/name constructor
-          Remove print statements from recipe
-        */
         Recipe r1 = new Recipe("apple pie","link1");
         r1.add_ingredient("apple");
         Recipe r2 = new Recipe("peanut butter and jelly","link2");
@@ -114,17 +98,11 @@ public class Controller{
     }
     public void test2(){
         //Tests removal, getting, and toStrings
-        /*NOTES:
-            Currently, if an item is removed from the fridge, the recipe remain in shown recipes.  Functionality is written in the
-            removeFromFridge function to fix this, but needs a public contains for the arraylist in Recipe.
-        */
         System.out.println("Fridge contents: "+this.fridgeToString());
         String testIngredient = this.getIngredient(0);
         if(testIngredient.equals(fridge.get(0))){
             System.out.println("getIngredient was successful");
         }
-        this.removeFromFridge("orange");
-        this.removeFromFridge("apple");
         Recipe r1 = shownRecipes.get(0);
         Recipe r2 = allRecipes.get(1);
         Recipe testr2 = this.getAllRecipe(1);
@@ -138,7 +116,8 @@ public class Controller{
         System.out.println("Fridge contents: "+this.fridgeToString());
         System.out.println("Shown Recipes: "+this.shownRecipesToString());
         System.out.println("All Recipes: "+this.allRecipesToString());
-        this.removeFromShown(r1);
+        this.removeFromFridge("orange");
+        this.removeFromFridge("apple");
         System.out.println("Fridge contents: "+this.fridgeToString());
         System.out.println("Shown Recipes: "+this.shownRecipesToString());
         System.out.println("All Recipes: "+this.allRecipesToString());
@@ -211,7 +190,6 @@ public class Controller{
                     ingredients = stringInput.nextLine();
                     System.out.println("Enter the link/instructions for the recipe:");
                     link = stringInput.nextLine();
-                    //add one more line for tags?
                     Recipe newRecipe = new Recipe(name,link);
                     String[] elements = ingredients.split(",");
                     for(int i = 0; i < elements.length; i++){
