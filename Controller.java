@@ -89,7 +89,7 @@ public class Controller{
         Recipe temp;
         for(int i = 0; i < shownRecipes.size(); i++){
             temp = shownRecipes.get(i);
-            result += temp.get_name() +" "+ temp.get_link();
+            result += temp.get_name() +"\n"+ temp.get_link();
             result += "\n";
             result += temp.get_ingredients();
         }
@@ -100,7 +100,7 @@ public class Controller{
         Recipe temp;
         for(int i = 0; i < allRecipes.size(); i++){
             temp = allRecipes.get(i);
-            result += temp.get_name() +" "+ temp.get_link();
+            result += temp.get_name() +"\n"+ temp.get_link();
             result += "\n";
             result += temp.get_ingredients();
         }
