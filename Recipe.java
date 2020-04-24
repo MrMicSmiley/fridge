@@ -55,6 +55,20 @@ public class Recipe extends tagManagement {
 		System.out.printf("%s", this.link);
 	}
 
+	public void get_ingredients()	{
+		
+		int counter = 1;
+		String sb = new String();
+		String ing = new String();
+		sb = "";
+		
+		for (String string : ingredients) {
+			ing = "(" + counter + ")" + " " + string + "\n";
+			sb = sb + ing;
+			counter++;
+		}
+	}
+
 	public void print_ingredients() {
 		if (ingredients == null) {
 			System.out.println("Nothing to see here");
@@ -63,7 +77,7 @@ public class Recipe extends tagManagement {
 		int counter = 1;
 		System.out.println("Here is the list of all the ingredients in this recipe.\n");
 		for (String string : ingredients) {
-
+			
 			System.out.printf("(%d) %s ", counter, string);
 			counter++;
 		}
