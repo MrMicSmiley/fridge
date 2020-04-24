@@ -199,8 +199,22 @@ public class Controller{
                     allRecipes.add(newRecipe);
                     System.out.println("Entry added to all recipes.");
     }       
-
-}
+    private void removeIngredient(){
+        String ingredient;
+        System.out.println("Enter the name of the ingredient to be removed or type '-1' to cancel:");
+        ingredient = stringInput.nextLine();
+        if(ingredient.equals("-1")){
+            System.out.println("Entry cancelled.");
+        }
+        else{
+            if(!fridge.contains(ingredient)){
+                System.out.println("Ingredient not found.");
+            }
+            else{
+                this.removeFromFridge(ingredient);
+            }
+        }
+    }
     public static void main(String[] args){
         //initialize the user input variables
         Controller controller = new Controller();
@@ -217,7 +231,8 @@ public class Controller{
             System.out.println("3. What can I make?");
             System.out.println("4. Browse Fridge");//show fridge
             System.out.println("5. Add ingredient to Fridge");
-            System.out.println("6. Add recipe");
+            System.out.println("6. Remove ingredient from Fridge");
+            System.out.println("7. Add recipe");
             System.out.println("-1. Quit");
 
             //retrieve input from user
@@ -246,6 +261,9 @@ public class Controller{
                     addIngredients();
                     break;
                 case 6:
+                    controller.removeIngredient();
+                    break;
+                case 7:
                     addRecipe();
                     break;
                 case -1:
