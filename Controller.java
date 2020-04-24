@@ -15,10 +15,10 @@ public class Controller{
     public static void filter(){
         Scanner stringInput = new Scanner(System.in);
         ArrayList<String> ingredientList = new ArrayList<String>();
-        while(true){
-            System.out.println("Enter ingredients to filter");
-            String s = stringInput.nextLine();
-            if(s == "q\n"){break;}
+        for(String s: fridge){
+            //System.out.println("Enter ingredients to filter");
+            //String s = stringInput.nextLine();
+            //if(s == "q\n"){break;}
             ingredientList.add(s);
             shownRecipes = filterRecipes(ingredientList);
             System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
