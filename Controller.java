@@ -15,13 +15,13 @@ public class Controller{
     
     public static void filter(){
         ArrayList<String> ingredientList = new ArrayList<String>();
+
         shownRecipes.clear();
         for(String s: fridge){
             ingredientList.add(s);
             shownRecipes = filterRecipes(ingredientList);
             System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
         }
-
     }
     private static ArrayList<Recipe> filterRecipes(ArrayList<String> ingredientList){
         ArrayList<Recipe> temp = new ArrayList<Recipe>();
@@ -39,6 +39,7 @@ public class Controller{
         }
         return temp;
     }
+
   private static void exactFilter(){
     shownRecipes.clear();
     for(Recipe compare: allRecipes){
@@ -50,7 +51,6 @@ public class Controller{
     }
   }
 
-  
   public void addToFridge(String ingredient){
         fridge.add(ingredient);
     }
@@ -162,12 +162,15 @@ public class Controller{
         System.out.println("All Recipes: "+this.allRecipesToString());
     }
 
-    private static void addIngredients(){
-        String ingredient;
-        System.out.println("Enter the name of the ingredient to be added or type '-1' to cancel:");
-        ingredient = stringInput.nextLine();
-        if(ingredient.equals("-1")){
-             System.out.println("Entry cancelled.");
+    public void test3(){
+    	//Tests filtering functions
+    	this.addToFridge("bread");
+    	this.addToFridge("peanut butter");
+    	filter();
+    	System.out.println("Fridge contents: "+this.fridgeToString());
+        System.out.println("Shown Recipes: "+ shownRecipesToString());
+        System.out.println("All Recipes: "+this.allRecipesToString());
+
             }
         else{
            fridge.add(ingredient);
@@ -176,6 +179,12 @@ public class Controller{
             Collections.sort(fridge);
                     //add ingredient to interior controller arraylist;
     }
+    private static void addIngredients(){
+        String ingredient;
+        System.out.println("Enter the name of the ingredient to be added or type '-1' to cancel:");
+        ingredient = stringInput.nextLine();
+        if(ingredient.equals("-1")){
+             System.out.println("Entry cancelled.");
     private static void addRecipe(){
                 String name;
                 String ingredients;
@@ -186,7 +195,7 @@ public class Controller{
                     System.out.println("Entry cancelled.");
                 }
                 else{
-                    System.out.println("Enter the ingredients on one line separated by commas (e.g. butter, flour, etc):");
+                    System.out.println("Enter the ingredients on one line separated by commas w/o spaces (e.g. butter, flour, etc):");
                     ingredients = stringInput.nextLine();
                     System.out.println("Enter the link/instructions for the recipe:");
                     link = stringInput.nextLine();
