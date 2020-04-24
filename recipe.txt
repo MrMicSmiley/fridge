@@ -15,3 +15,44 @@ ketchup
 ***
 n/a
 ***
+
+Sandwhich
+some link
+turkey
+lettuce
+mayo
+***
+n/a
+***
+
+Computer
+some linnk
+ram
+gpu
+cpu
+***
+n/a
+***
+
+water
+some link
+hydrogen
+oxygen
+***
+n/a
+***
+
+idk
+some link
+ram
+mayo
+***
+n/a
+***
+
+idc
+some link
+cpu
+***
+n/a
+***
