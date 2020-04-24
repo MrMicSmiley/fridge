@@ -31,7 +31,7 @@ public class Controller{
         for (Recipe compare: allRecipes){
             boolean addIngredient = true;
             for (String s: ingredientList){
-                if(!compare.getIngredients().contains(s)){
+                if(!compare.containsIngredient(s)){
                     addIngredient = false;
                     break;
                 }
@@ -41,6 +41,7 @@ public class Controller{
             }
         }
         return temp;
+    }
   public void addToFridge(String ingredient){
         fridge.add(ingredient);
     }
@@ -51,7 +52,7 @@ public class Controller{
         shownRecipes.add(recipe);
     }
 
-    public String getIngredient(int index){
+    public static String getIngredient(int index){
         return fridge.get(index);
     }
     public Recipe getShownRecipe(int index){
@@ -83,7 +84,7 @@ public class Controller{
         }
         return result;
     }
-    public String shownRecipesToString(){
+    public static String shownRecipesToString(){
         String result = "";
         Recipe temp;
         for(int i = 0; i < shownRecipes.size(); i++){
@@ -122,13 +123,13 @@ public class Controller{
         this.addToAllRecipes(r1);
         this.addToAllRecipes(r2);
         this.addToShownRecipes(r1);
-        System.out.println("Shown Recipes: "+this.shownRecipesToString());
-        System.out.println("All Recipes: "+this.allRecipesToString());
+        System.out.println("Shown Recipes: "+ shownRecipesToString());
+        System.out.println("All Recipes: "+ allRecipesToString());
     }
     public void test2(){
         //Tests removal, getting, and toStrings
         System.out.println("Fridge contents: "+this.fridgeToString());
-        String testIngredient = this.getIngredient(0);
+        String testIngredient = getIngredient(0);
         if(testIngredient.equals(fridge.get(0))){
             System.out.println("getIngredient was successful");
         }
@@ -143,12 +144,12 @@ public class Controller{
             System.out.println("getAllRecipe was successful");
         }
         System.out.println("Fridge contents: "+this.fridgeToString());
-        System.out.println("Shown Recipes: "+this.shownRecipesToString());
+        System.out.println("Shown Recipes: "+ shownRecipesToString());
         System.out.println("All Recipes: "+this.allRecipesToString());
         this.removeFromFridge("orange");
         this.removeFromFridge("apple");
         System.out.println("Fridge contents: "+this.fridgeToString());
-        System.out.println("Shown Recipes: "+this.shownRecipesToString());
+        System.out.println("Shown Recipes: "+ shownRecipesToString());
         System.out.println("All Recipes: "+this.allRecipesToString());
     }
 
