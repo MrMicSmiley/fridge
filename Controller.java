@@ -5,6 +5,7 @@ public class Controller{
     private static ArrayList<String> fridge;
     private static ArrayList<Recipe> allRecipes;
     private static ArrayList<Recipe> shownRecipes;
+    private static Scanner stringInput = new Scanner(System.in);
 
     public Controller(){
         fridge = new ArrayList<String>();
@@ -163,7 +164,6 @@ public class Controller{
 
     private static void addIngredients(){
         String ingredient;
-        Scanner stringInput = new Scanner(System.in);
         System.out.println("Enter the name of the ingredient to be added or type '-1' to cancel:");
         ingredient = stringInput.nextLine();
         if(ingredient.equals("-1")){
@@ -174,12 +174,10 @@ public class Controller{
              System.out.println("Entry added to fridge.");
         }
             Collections.sort(fridge);
-        stringInput.close();
                     //add ingredient to interior controller arraylist;
     }
     private static void addRecipe(){
                 String name;
-                Scanner stringInput = new Scanner(System.in);
                 String ingredients;
                 String link;
                 System.out.println("Enter the name of the recipe to be added or type '-1' to cancel:");
@@ -200,8 +198,7 @@ public class Controller{
                     }
                     allRecipes.add(newRecipe);
                     System.out.println("Entry added to all recipes.");
-    }
-    stringInput.close();
+    }       
 
 }
     public static void main(String[] args){
@@ -209,28 +206,29 @@ public class Controller{
         Controller controller = new Controller();
         //load recipes either from file or manually here
         allRecipes = readRecipe.setUp();
-        String input = "";
-        Scanner stringInput = new Scanner(System.in);
-        int intInput = 0;
+        int input = 0;
+        //int intInput = 0;
 
         //menu loop
         System.out.println("Welcome to the Fridge.  What would you like to do?");
-        while(intInput != -1){
+        while(input != -1){
             System.out.println("1. Browse Available Recipes");//show all recipes
             System.out.println("2. Browse Possible Recipes");//show shown recipes
             System.out.println("3. What can I make?");
             System.out.println("4. Browse Fridge");//show fridge
             System.out.println("5. Add ingredient to Fridge");
             System.out.println("6. Add recipe");
-            System.out.println("7. Quit");
+            System.out.println("-1. Quit");
 
             //retrieve input from user
-            input = stringInput.nextLine();
-            intInput = Integer.parseInt(input);
+            input = stringInput.nextInt();
+            
+            stringInput.nextLine();
+            //intInput = Integer.parseInt(input);
 
             //browse
             //SORT HERE
-            switch (intInput){
+            switch (input){
                 case 1:
                     System.out.println("If a recipe you want isn't shown, use the add recipe function.");
                     System.out.println("Current logged recipes: \n"+controller.allRecipesToString());
@@ -250,8 +248,8 @@ public class Controller{
                 case 6:
                     addRecipe();
                     break;
-                case 7:
-                    intInput = -1;
+                case -1:
+                    System.exit(0);
                     break;
                 default:
                     System.out.println("Invalid input, please try again.");
