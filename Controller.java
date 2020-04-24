@@ -147,7 +147,15 @@ public class Controller{
         System.out.println("All Recipes: "+this.allRecipesToString());
     }
 
-
+    public void test3(){
+    	//Tests filtering functions
+    	this.addToFridge("bread");
+    	this.addToFridge("peanut butter");
+    	filter();
+    	System.out.println("Fridge contents: "+this.fridgeToString());
+        System.out.println("Shown Recipes: "+ shownRecipesToString());
+        System.out.println("All Recipes: "+this.allRecipesToString());
+    }
     public static void main(String[] args){
         //initialize the user input variables
         Controller controller = new Controller();
