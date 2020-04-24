@@ -209,7 +209,7 @@ public class Controller{
                     System.out.println("Entry cancelled.");
                 }
                 else{
-                    System.out.println("Enter the ingredients on one line separated by commas (e.g. butter, flour, etc):");
+                    System.out.println("Enter the ingredients on one line separated by commas w/o spaces (e.g. butter, flour, etc):");
                     ingredients = stringInput.nextLine();
                     System.out.println("Enter the link/instructions for the recipe:");
                     link = stringInput.nextLine();
