@@ -1,4 +1,4 @@
-import java.util.ArrayList;;
+import java.util.ArrayList;
 
 public class Recipe extends tagManagement {
 
@@ -8,24 +8,29 @@ public class Recipe extends tagManagement {
 
 	public Recipe() {
 		this.rec_name = null;
-		this.ingredients = null;
+		this.ingredients = new ArrayList<String>();//was null
 		this.link = null;
 	}
 
 	public String get_name() {
-		System.out.printf("%s \n", rec_name);
+		//System.out.printf("%s \n", rec_name);
 		return rec_name;
 	}
 
 	public String get_link() {
-		System.out.printf("%s \n", link);
+		//System.out.printf("%s \n", link);
 		return link;
 	}
 
 	public int num_ingred() {
 		return ingredients.size();
 	}
-
+	public boolean containsIngredient(String ingredient){
+		if(ingredients.contains(ingredient)){
+			return true;
+		}
+		return false;
+	}
 	public Recipe(String rec_name, String link) {
 		this.rec_name = rec_name;
 		this.ingredients = new ArrayList<String>();
@@ -37,10 +42,12 @@ public class Recipe extends tagManagement {
 			System.out.println("That was not a valid ingredient to add.");
 			return false;
 		}
-		for (String each : ingredients) {
-			if (each.equals(ingredient)) {
-				System.out.println("This ingredient is already part of the recipe.\n");
-				return false;
+		if(!ingredients.isEmpty()){
+			for (String each : ingredients) {
+				if (each.equals(ingredient)) {
+					System.out.println("This ingredient is already part of the recipe.\n");
+					return false;
+				}
 			}
 		}
 		ingredients.add(ingredient);
@@ -48,20 +55,35 @@ public class Recipe extends tagManagement {
 		return true;
 	}
 
-	public void getLink() {
+	/*public void getLink() {
 		System.out.println("Please follow link to view the recipe.");
 		System.out.printf("%s", this.link);
+	}*/
+
+	public String get_ingredients()	{
+		
+		int counter = 1;
+		String sb = new String();
+		String ing = new String();
+		sb = "";
+		
+		for (String string : ingredients) {
+			ing = "(" + counter + ")" + " " + string + "\n";
+			sb = sb + ing;
+			counter++;
+		}
+		return sb;
 	}
 
 	public void print_ingredients() {
 		if (ingredients == null) {
-			System.out.println("Nothing to see hear");
+			System.out.println("Nothing to see here");
 			return;
 		}
 		int counter = 1;
 		System.out.println("Here is the list of all the ingredients in this recipe.\n");
 		for (String string : ingredients) {
-
+			
 			System.out.printf("(%d) %s ", counter, string);
 			counter++;
 		}
