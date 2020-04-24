@@ -1,58 +1,73 @@
-Apple Pie by Grandma Ople
-https://www.allrecipes.com/recipe/12682/apple-pie-by-grandma-ople/
-bread
-sugar
-flower
+name
+link
+ingredient1
+ingredient2
+ingredient3
 ***
-quarantine food
-***
-
-Burger
-some link
-bread
-steak
-ketchup
-***
-n/a
+tag1
+tag2
 ***
 
-Sandwhich
-some link
-turkey
-lettuce
-mayo
+Microwave 4-minute BBQ Chicken Nachos
+https://tasty.co/recipe/microwave-4-minute-bbq-chicken-nachos
+chicken
+bbq sauce
+tortilla chips
+pico de gallo
+cheddar cheese
+onion
+guacamole
+sour cream
 ***
-n/a
-***
-
-Computer
-some linnk
-ram
-gpu
-cpu
-***
-n/a
+N/A
+N/A
 ***
 
-water
-some link
-hydrogen
-oxygen
+Fried Rice
+https://tasty.co/recipe/microwave-fried-rice
+rice
+soy sauce
+sesame oil
+bacon
+pea
+carrot
+eggs
+scallion
 ***
-n/a
+N/A
+N/A
 ***
 
-idk
-some link
-ram
-mayo
+Chicken Quesadilla
+https://tasty.co/recipe/microwave-4-minute-chicken-quesadilla
+tortillas
+chicken
+bell pepper
+taco seasoning
+cheddar cheese
 ***
-n/a
+N/A
+N/A
 ***
 
-idc
-some link
-cpu
+3-minute Omelette In a Mug
+https://tasty.co/recipe/microwave-3-minute-omelette-in-a-mug
+bell pepper
+ham
+spinach
 ***
-n/a
+N/A
+N/A
+***
+
+Green Vitamin Juice
+https://tasty.co/recipe/green-vitamin-juice
+orange
+spinach
+kale
+cucumber
+apple
+***
+N/A
+N/A
 ***
