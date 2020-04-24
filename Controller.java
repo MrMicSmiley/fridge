@@ -18,7 +18,7 @@ public class Controller{
         while(true){
             System.out.println("Enter ingredients to filter");
             String s = stringInput.nextLine();
-            if(s == "q"){break;}
+            if(s == "q\n"){break;}
             ingredientList.add(s);
             shownRecipes = filterRecipes(ingredientList);
             System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
