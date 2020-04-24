@@ -2,17 +2,46 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Controller{
-    private ArrayList<String> fridge;
-    private ArrayList<Recipe> allRecipes;
-    private ArrayList<Recipe> shownRecipes;
+    private static ArrayList<String> fridge;
+    private static ArrayList<Recipe> allRecipes;
+    private static ArrayList<Recipe> shownRecipes;
 
     public Controller(){
         fridge = new ArrayList<String>();
         allRecipes = new ArrayList<Recipe>();
         shownRecipes = new ArrayList<Recipe>();
     }
+    
+    public static void filter(){
+        Scanner stringInput = new Scanner(System.in);
+        ArrayList<String> ingredientList = new ArrayList<String>();
+        while(true){
+            System.out.println("Enter ingredients to filter");
+            String s = stringInput.nextLine();
+            if(s == "q"){break;}
+            ingredientList.add(s);
+            shownRecipes = filterRecipes(ingredientList);
+            System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
+        }
+        stringInput.close();
 
-    public void addToFridge(String ingredient){
+    }
+    private static ArrayList<Recipe> filterRecipes(ArrayList<String> ingredientList){
+        ArrayList<Recipe> temp = new ArrayList<Recipe>();
+        for (Recipe compare: allRecipes){
+            boolean addIngredient = true;
+            for (String s: ingredientList){
+                if(!compare.getIngredients().contains(s)){
+                    addIngredient = false;
+                    break;
+                }
+            }
+            if(addIngredient){
+                temp.add(compare);
+            }
+        }
+        return temp;
+  public void addToFridge(String ingredient){
         fridge.add(ingredient);
     }
     public void addToAllRecipes(Recipe recipe){
@@ -123,14 +152,12 @@ public class Controller{
         System.out.println("All Recipes: "+this.allRecipesToString());
     }
 
+
     public static void main(String[] args){
         //initialize the user input variables
         Controller controller = new Controller();
-        //controller.test1();
-        //controller.test2();
-
         //load recipes either from file or manually here
-
+        allRecipes = readRecipe.setUp();
         String input = "";
         Scanner stringInput = new Scanner(System.in);
         int intInput = 0;
@@ -157,7 +184,8 @@ public class Controller{
             }
             else if(intInput == 2){
                 //call filter function here
-                System.out.println("Recipes possible based on current fridge: \n"+controller.shownRecipesToString());
+                filter();
+               
             }
             else if(intInput == 3){
                 System.out.println("Current fridge contents: \n"+controller.fridgeToString());
@@ -171,7 +199,7 @@ public class Controller{
                     System.out.println("Entry cancelled.");
                 }
                 else{
-                    controller.fridge.add(ingredient);
+                    fridge.add(ingredient);
                     System.out.println("Entry added to fridge.");
                 }
                 //add ingredient to interior controller arraylist;
@@ -190,12 +218,13 @@ public class Controller{
                     ingredients = stringInput.nextLine();
                     System.out.println("Enter the link/instructions for the recipe:");
                     link = stringInput.nextLine();
+                    //add one more line for tags?
                     Recipe newRecipe = new Recipe(name,link);
                     String[] elements = ingredients.split(",");
                     for(int i = 0; i < elements.length; i++){
                         newRecipe.add_ingredient(elements[i]);
                     }
-                    controller.allRecipes.add(newRecipe);
+                    allRecipes.add(newRecipe);
                     System.out.println("Entry added to all recipes.");
                 }
             }
@@ -207,7 +236,9 @@ public class Controller{
                 System.out.println("Invalid input, please try again.");
             }
         }
+        stringInput.close();
     }
+
 
 
 }
