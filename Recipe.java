@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.util.Collections;
 public class Recipe extends tagManagement {
 
 	private String rec_name;
@@ -16,7 +16,9 @@ public class Recipe extends tagManagement {
 		//System.out.printf("%s \n", rec_name);
 		return rec_name;
 	}
-
+	public void sort(){
+		Collections.sort(ingredients);
+	}
 	public String get_link() {
 		//System.out.printf("%s \n", link);
 		return link;
@@ -51,7 +53,7 @@ public class Recipe extends tagManagement {
 			}
 		}
 		ingredients.add(ingredient);
-		System.out.printf("%s was added to the recipe.\n", ingredient);
+		//System.out.printf("%s was added to the recipe.\n", ingredient);
 		return true;
 	}
 
@@ -75,6 +77,9 @@ public class Recipe extends tagManagement {
 		return sb;
 	}
 
+	public ArrayList<String> getArrayIngredients(){
+		return ingredients;
+	}
 	public void print_ingredients() {
 		if (ingredients == null) {
 			System.out.println("Nothing to see here");
