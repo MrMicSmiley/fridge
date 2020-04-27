@@ -46,8 +46,8 @@ public class Controller{
         if (compare.getArrayIngredients().equals(fridge)){
             shownRecipes.add(compare);
         }
-        System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
     }
+    System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
   }
 
   
