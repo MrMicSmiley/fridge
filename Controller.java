@@ -14,13 +14,20 @@ public class Controller{
     }
     
     public static void filter(){
+        System.out.println("------------");
         ArrayList<String> ingredientList = new ArrayList<String>();
         shownRecipes.clear();
         for(String s: fridge){
             ingredientList.add(s);
             shownRecipes = filterRecipes(ingredientList);
         }
-        System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
+        if(shownRecipesToString().equals("")){
+            System.out.println("This list is currently empty.");
+        }
+        else{
+            System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
+        }
+        System.out.println("------------");
     }
     private static ArrayList<Recipe> filterRecipes(ArrayList<String> ingredientList){
         ArrayList<Recipe> temp = new ArrayList<Recipe>();
@@ -57,7 +64,13 @@ public class Controller{
             shownRecipes.add(compare);
         }
     }
-    System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
+    System.out.println("------------");
+    if(shownRecipesToString().equals("")){
+        System.out.println("This list is currently empty.");
+    }
+    else{
+        System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
+    }
     System.out.println("------------");
   }
 
@@ -267,8 +280,15 @@ public class Controller{
             //SORT HERE
             switch (input){
                 case 1:
+                    System.out.println("------------");
                     System.out.println("If a recipe you want isn't shown, use the add recipe function.");
-                    System.out.println("Current logged recipes: \n"+controller.allRecipesToString());
+                    if(controller.allRecipesToString().equals("")){
+                        System.out.println("This list is currently empty.");
+                    }
+                    else{
+                        System.out.println("Current logged recipes: \n"+controller.allRecipesToString());
+                    }
+                    System.out.println("------------");
                     break;
                 case 2: 
                     filter();
@@ -276,8 +296,15 @@ public class Controller{
                 case 3:
                     exactFilter();
                     break;
-                case 4: 
-                    System.out.println("Current fridge contents: \n"+controller.fridgeToString());
+                case 4:
+                    System.out.println("------------"); 
+                    if(controller.fridgeToString().equals("")){
+                        System.out.println("This list is currently empty.");
+                    }
+                    else{
+                        System.out.println("Current fridge contents: \n"+controller.fridgeToString());
+                    }
+                    System.out.println("------------");
                     break;
                 case 5:
                     addIngredients();
