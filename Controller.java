@@ -161,7 +161,15 @@ public class Controller{
         System.out.println("Shown Recipes: "+ shownRecipesToString());
         System.out.println("All Recipes: "+this.allRecipesToString());
     }
-
+    public void test3(){
+        //Tests filtering functions
+        this.addToFridge("bread");
+        this.addToFridge("peanut butter");
+        filter();
+        System.out.println("Fridge contents: "+this.fridgeToString());
+        System.out.println("Shown Recipes: "+ shownRecipesToString());
+        System.out.println("All Recipes: "+this.allRecipesToString());
+    }
     private static void addIngredients(){
         String ingredient;
         System.out.println("Enter the name of the ingredient to be added or type '-1' to cancel:");
@@ -223,7 +231,9 @@ public class Controller{
         allRecipes = readRecipe.setUp();
         int input = 0;
         //int intInput = 0;
-
+        //controller.test1();
+        //controller.test2();
+        //controller.test3();
         //menu loop
         System.out.println("Welcome to the Fridge.  What would you like to do?");
         while(input != -1){
