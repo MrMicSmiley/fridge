@@ -42,11 +42,20 @@ public class Controller{
     shownRecipes.clear();
     for(Recipe compare: allRecipes){
         compare.sort();
-        if (compare.getArrayIngredients().equals(fridge)){
+        ArrayList<String> temp = compare.getArrayIngredients();
+        boolean shouldAdd = true;
+        for(String ingredient: temp){
+            if (!fridge.contains(ingredient)){
+                shouldAdd = false;
+                break;
+            }
+        }
+        if(shouldAdd){
             shownRecipes.add(compare);
         }
     }
     System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
+    System.out.println("------------");
   }
 
   
