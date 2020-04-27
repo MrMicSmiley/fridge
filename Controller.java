@@ -25,16 +25,19 @@ public class Controller{
     private static ArrayList<Recipe> filterRecipes(ArrayList<String> ingredientList){
         ArrayList<Recipe> temp = new ArrayList<Recipe>();
         for (Recipe compare: allRecipes){
-            boolean addIngredient = true;
             for (String s: ingredientList){
-                if(!compare.containsIngredient(s)){
-                    addIngredient = false;
+                if(compare.containsIngredient(s)){
+                    temp.add(compare);
                     break;
                 }
+               /*if(!compare.containsIngredient(s)){
+                    addIngredient = false;
+                    break;
+                }*/
             }
-            if(addIngredient){
+            /*if(addIngredient){
                 temp.add(compare);
-            }
+            }*/
         }
         return temp;
     }
