@@ -19,9 +19,8 @@ public class Controller{
         for(String s: fridge){
             ingredientList.add(s);
             shownRecipes = filterRecipes(ingredientList);
-            System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
         }
-
+        System.out.println("Recipes possible based on current fridge: \n"+ shownRecipesToString());
     }
     private static ArrayList<Recipe> filterRecipes(ArrayList<String> ingredientList){
         ArrayList<Recipe> temp = new ArrayList<Recipe>();
