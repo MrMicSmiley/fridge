@@ -165,7 +165,7 @@ public class Controller{
 		chalupa.add_ingredient("Tomato");
 		chalupa.add_ingredient(" ");
 		chalupa.get_name();
-		chalupa.getLink();
+		chalupa.get_link();
 		chalupa.print_ingredients();
 		chalupa.rem_ingredient("Taco");
 		chalupa.print_ingredients();
