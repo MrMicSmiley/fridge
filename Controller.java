@@ -158,6 +158,17 @@ public class Controller{
         this.addToShownRecipes(r1);
         System.out.println("Shown Recipes: "+ shownRecipesToString());
         System.out.println("All Recipes: "+ allRecipesToString());
+        
+        Recipe chalupa = new Recipe("chalupaz", "https://en.wikipedia.org/wiki/Chalupa");
+		chalupa.add_ingredient("Taco");
+		chalupa.add_ingredient("Lettuce");
+		chalupa.add_ingredient("Tomato");
+		chalupa.add_ingredient(" ");
+		chalupa.get_name();
+		chalupa.getLink();
+		chalupa.print_ingredients();
+		chalupa.rem_ingredient("Taco");
+		chalupa.print_ingredients();
     }
     public void test2(){
         //Tests removal, getting, and toStrings
